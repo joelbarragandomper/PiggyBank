@@ -29,7 +29,7 @@ contract PiggyBank {
         uint256 amount = address(this).balance;
         require(amount > 0, "No ETH to withdraw");
 
-        (bool exit, ) = owner.call{value: amount}("");
+        (bool exit,) = owner.call{value: amount}("");
         require(exit, "Failed to transfer ETH to owner");
         emit Withdrawn(owner, amount);
     }
